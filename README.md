@@ -13,11 +13,11 @@ I've used the Godot game engine to make this game, it isnt 100% complete yet.
 
 What ive completed:
 
-8 directional player movement with appropriate animation( q, w, e, a, s, d, z, x)
-Wall collision
-Scoreboard
-End screen
-Random friend placement
+8 directional player movement with appropriate animation( q, w, e, a, s, d, z, x).
+Wall collision.
+Scoreboard.
+End screen.
+Random friend placement.
 
 What i have to work on:
 
