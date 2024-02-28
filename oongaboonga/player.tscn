@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://character_sheet.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends KinematicBody2D
+
+
+var speed = 9000
+
+var direction = Vector2.ZERO
+
+var lastkey=\"\"
+
+func _input(event):
+	if event.is_action_pressed(\"up\") and direction!=Vector2(0,1):
+		direction.y = -1
+		direction.x = 0
+		lastkey=\"up\"
+	if event.is_action_pressed(\"down\") and direction!=Vector2(0,-1):
+		direction.y = 1
+		direction.x = 0
+		lastkey=\"down\"
+	if event.is_action_pressed(\"left\") and direction!=Vector2(1,0):
+		direction.x = -1
+		direction.y = 0
+		lastkey=\"left\"
+	if event.is_action_pressed(\"right\") and direction!=Vector2(-1,0):
+		direction.x = 1
+		direction.y = 0
+		lastkey=\"right\"
+	if event.is_action_pressed(\"q\") and direction!=Vector2(0.7,0.7) and lastkey!=\"x\":
+		direction.y = -0.7
+		direction.x = -0.7
+		lastkey=\"q\"
+	if event.is_action_pressed(\"e\") and direction!=Vector2(-0.7,0.7) and lastkey!=\"s\":
+		direction.y = -0.7
+		direction.x = 0.7
+		lastkey=\"e\"
+	if event.is_action_pressed(\"z\") and direction!=Vector2(0.7,-0.7) and lastkey!=\"e\":
+		direction.x = -0.7
+		direction.y = 0.7
+		lastkey=\"z\"
+	if event.is_action_pressed(\"x\") and direction!=Vector2(-0.7,-0.7) and lastkey!=\"q\":
+		direction.x = 0.7
+		direction.y = 0.7
+		lastkey=\"x\"
+
+func _physics_process(delta):
+
+	if direction != Vector2.ZERO:
+		direction = direction.normalized()
+
+	move_and_slide(direction * speed * delta)
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.0389, 24.3387 )
+
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 323, 174 )
+scale = Vector2( 1.3656, 1.17098 )
+collision_mask = 4
+script = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 13.181, 10.2479 )
+rotation = -3.14159
+scale = Vector2( 3.88297, -2.81189 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 12
+frame = 52
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 15.3778, 14.9448 )
+scale = Vector2( 1.03571, 1 )
+shape = SubResource( 1 )
