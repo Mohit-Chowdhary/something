@@ -22,6 +22,5 @@ Random friend placement
 What i have to work on:
 
 Making the actual friends follow, ive unsucessfully tried implementing it multiple times but just cannot figure out how, yet.
-Random friend placement is not actually random, it follows the same pattern. Im guessing its because the rand_range() function in godot isnt quite perfect.
 
 Thank you for reading, would love to hear feedback on this.
